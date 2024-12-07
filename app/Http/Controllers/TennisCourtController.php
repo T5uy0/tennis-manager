@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CourtStatus;
 use App\Models\Court;
+use App\Models\Reservation;
 use App\Models\TennisCourt;
 use App\Models\Reservations;
 use Illuminate\Http\Request;
@@ -15,8 +17,9 @@ class TennisCourtController extends Controller
     public function index()
     {
         $courts = Court::all();
+        $getHours = Reservation::getAvailableHours();
 
-        return view('TennisCourt.index',compact('courts'));
+        return view('TennisCourt.index',compact('courts','getHours'));
     }
 
     /**
@@ -48,7 +51,9 @@ class TennisCourtController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $statuses = CourtStatus::all();
+        $court = Court::findOrFail($id); // Renvoie une 404 si le court n'existe pas
+        return view('TennisCourt.edit', compact('court','statuses'));
     }
 
     /**
@@ -56,7 +61,10 @@ class TennisCourtController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $court = Court::findOrFail($id); // Renvoie une 404 si le court n'existe pas
+        $court->updateOrFail($request->all());
+
+        return redirect(route('TennisCourt.index', $court));
     }
 
     /**

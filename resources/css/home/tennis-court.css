@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .container{
     display: flex;
     flex-direction: row;
@@ -13,7 +14,10 @@
 }
 
 .element {
-    padding: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 .hour {
