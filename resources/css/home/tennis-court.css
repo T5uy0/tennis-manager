@@ -13,10 +13,13 @@
 }
 
 .element {
-    padding: 1rem;
+    padding: 2rem;
+}
+
+.hour {
     background-color: aqua;
 }
 
-.hour{
-    background-color: blue;
+.title {
+    background-color: rgb(0, 149, 255);
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Court;
 use App\Models\TennisCourt;
 use App\Models\Reservations;
 use Illuminate\Http\Request;
@@ -13,9 +14,9 @@ class TennisCourtController extends Controller
      */
     public function index()
     {
-        $reservations = Reservations::all();
-        $tennisCourts = TennisCourt::all();
-        return view('TennisCourt.index',compact('tennisCourts','reservations'));
+        $courts = Court::all();
+
+        return view('TennisCourt.index',compact('courts'));
     }
 
     /**

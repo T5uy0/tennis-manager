@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hours', function (Blueprint $table) {
-            $table->id(); // Identifiant unique pour chaque plage horaire
-            $table->time('start_time'); // Heure de début
-            $table->time('end_time'); // Heure de fin
-            $table->timestamps(); // Champs created_at et updated_at
+        Schema::create('court', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('hour');
+            $table->string('day');
+            $table->timestamps();
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hours');
+        Schema::dropIfExists('court');
     }
 };

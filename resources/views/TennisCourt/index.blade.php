@@ -11,7 +11,7 @@
         @include('home.header')
     </header>
     <main>
-        <h1>Réserver votre terrain !</h1>
+        <h1 class="text-4xl">Réserver votre terrain !</h1>
         <div class="container">
             <div class="columns">
                 <div class="element hour">Heure</div>
@@ -22,36 +22,60 @@
                 <div class="element hour">12h15</div>
             </div>
             <div class="columns">
-                <div class="element">Court No 6</div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
+                <div class="element title">Court No 6</div>
+                @foreach ($courts as $court)
+                    @if ($court->name == 'Court No 6')
+                        @if ($court->court_status_id == 1)
+                            <div class="element bg-green-700"><a href="{{ route('TennisCourt.show', $court) }}">Libre</a></div>
+                        @elseif ($court->court_status_id == 2)
+                            <div class="element bg-blue-700">Occupé</div>
+                        @else
+                            <div class="element bg-red-600">Maintenance</div>
+                        @endif
+                    @endif
+                @endforeach
             </div>
             <div class="columns">
-                <div class="element">Court No 7</div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
+                <div class="element title">Court No 7</div>
+                @foreach ($courts as $court)
+                    @if ($court->name == 'Court No 7')
+                        @if ($court->court_status_id == 1)
+                            <div class="element bg-green-700"><a href="{{ route('TennisCourt.show', $court) }}">Libre</a></div>
+                        @elseif ($court->court_status_id == 2)
+                            <div class="element bg-blue-700">Occupé</div>
+                        @else
+                            <div class="element bg-red-600">Maintenance</div>
+                        @endif
+                    @endif
+                @endforeach
             </div>
             <div class="columns">
-                <div class="element">Court No 8</div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
+                <div class="element title">Court No 8</div>
+                @foreach ($courts as $court)
+                    @if ($court->name == 'Court No 8')
+                        @if ($court->court_status_id == 1)
+                            <div class="element bg-green-700"><a href="{{ route('TennisCourt.show', $court) }}">Libre</a></div>
+                        @elseif ($court->court_status_id == 2)
+                            <div class="element bg-blue-700">Occupé</div>
+                        @else
+                            <div class="element bg-red-600">Maintenance</div>
+                        @endif
+                    @endif
+                @endforeach
             </div>
             <div class="columns">
-                <div class="element">Court No 9</div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
-                <div class="element"><a href="">Libre</a></div>
+                <div class="element title">Court No 9</div>
+                @foreach ($courts as $court)
+                    @if ($court->name == 'Court No 9')
+                        @if ($court->court_status_id == 1)
+                            <div class="element bg-green-700"><a href="{{ route('TennisCourt.show', $court) }}">Libre</a></div>
+                        @elseif ($court->court_status_id == 2)
+                            <div class="element bg-blue-700">Occupé</div>
+                        @else
+                            <div class="element bg-red-600">Maintenance</div>
+                        @endif
+                    @endif
+                @endforeach
             </div>
         </div>
     </main>
