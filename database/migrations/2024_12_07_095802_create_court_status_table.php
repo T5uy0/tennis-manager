@@ -16,10 +16,6 @@ return new class extends Migration
             $table->string('label');
             $table->timestamps();
         });
-
-        Schema::table('court', function (Blueprint $table) {
-            $table->foreignId('court_status_id')->nullable()->constrained('court_statuses');
-        });
     }
 
     /**
@@ -27,11 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('court', function (Blueprint $table) {
-            $table->dropForeign(['court_status_id']);
-            $table->dropColumn('court_status_id');
-        });
-
         Schema::dropIfExists('court_status');
     }
 };

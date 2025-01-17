@@ -14,4 +14,9 @@ class Court extends Model
     ];
 
     protected $fillable = ['court_status_id'];
+
+    public function dates()
+    {
+        return $this->belongsTo(Date::class);
+    }
 }

@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('court', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('hour');
-            $table->string('day');
-            $table->timestamps();
-            $table->foreignId('court_statuses_id')->references('id')->on('court_statuses');
+        Schema::table('courts',function (Blueprint $table){
+            $table->foreignId('date_id')->nullable()->constrained();
+            $table->dropColumn('day');
         });
     }
 
@@ -26,6 +22,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('court');
+        Schema::table('courts',function (Blueprint $table){
+            $table->string('day');
+            $table->dropForeign(['date_id']);
+            $table->dropColumn('date_id');
+        });
     }
 };

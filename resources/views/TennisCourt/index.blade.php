@@ -13,10 +13,20 @@
     <main>
         <h1 class="text-4xl">Réserver votre terrain !</h1>
         <div class="container">
+            <form action="TennisCourt" method="get">
+                <label for="date">Statut du court :</label>
+                <br>
+                @foreach($dates as $date)
+                    <button class="element bg-pink-700" name="date" value="{{ $date->date }}">{{ $date->date }}</button>
+                @endforeach
+            </form>
+        </div>
+
+        <div class="container">
             <div class="columns">
                 <div class="element hour">Heure</div>
                 @foreach ($getHours as $getHour)
-                    <div class="element hour">{{$getHour}}</div>
+                    <div class="element hour ">{{$getHour}}</div>
                 @endforeach
             </div>
             <div class="columns">
